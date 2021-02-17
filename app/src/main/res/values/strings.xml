@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Cocodrilo v20210216</string>
+    <string-array name="supermarket_brands">
+        <item>La Anónima</item>
+        <item>La Coope</item>
+        <item>Super Todo</item>
+    </string-array>
+    <string-array name="supermarket_brands_0_locations">
+        <item>San Martín Centro</item>
+        <item>Villa Paur</item>
+        <item>Junín de los Andes</item>
+    </string-array>
+    <string-array name="supermarket_brands_1_locations">
+        <item>San Martín Centro</item>
+    </string-array>
+    <string-array name="supermarket_brands_2_locations">
+        <item>San Martín Centro</item>
+        <item>Vega San Martín</item>
+    </string-array>
+</resources>
