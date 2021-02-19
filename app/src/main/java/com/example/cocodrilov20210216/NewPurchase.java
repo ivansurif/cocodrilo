@@ -13,6 +13,7 @@ import android.widget.Spinner;
 public class NewPurchase extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,41 +40,21 @@ public class NewPurchase extends AppCompatActivity implements AdapterView.OnItem
         Log.d("SELECTION","Spinner ID: "+spinnerId);
         Spinner brandsLocationsSpinner = (Spinner) findViewById(R.id.brands_locations);
 
+
+
         if(spinnerId == R.id.supermarket_spinner){
             Log.d("SELECTION","Spinner ID: "+spinnerId);
             Log.d("SELECTION","Usuario hizo selección: "+pos);
             String selection = parent.getSelectedItem().toString();
             Log.d("SELECTION","selección: "+selection);
         if(pos == 0){
-            ArrayAdapter<String> adapter= new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.supermarket_brands_0_locations));
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            brandsLocationsSpinner.setAdapter(adapter);
-            brandsLocationsSpinner.setOnItemSelectedListener(this);
-            String brandsLocationsSpinnerSelection = brandsLocationsSpinner.getSelectedItem().toString();
-            Log.d("SELECTION","selección spinner: "+brandsLocationsSpinnerSelection);
-
-
-
+            populateLocationsSpinner(brandsLocationsSpinner,view, String.valueOf(R.array.supermarket_brands_0_locations));
         }
-        //if kfc, populates plate spinner  with respective
         if(pos == 1){
-            ArrayAdapter<String> adapter= new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.supermarket_brands_1_locations));
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            brandsLocationsSpinner.setAdapter(adapter);
-            brandsLocationsSpinner.setOnItemSelectedListener(this);
-            String brandsLocationsSpinnerSelection = brandsLocationsSpinner.getSelectedItem().toString();
-            Log.d("SELECTION","selección spinner: "+brandsLocationsSpinnerSelection);
-
+            populateLocationsSpinner(brandsLocationsSpinner,view,String.valueOf(R.array.supermarket_brands_1_locations));
         }
-
         if(pos == 2){
-            ArrayAdapter<String> adapter= new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.supermarket_brands_2_locations));
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            brandsLocationsSpinner.setAdapter(adapter);
-            brandsLocationsSpinner.setOnItemSelectedListener(this);
-            String brandsLocationsSpinnerSelection = brandsLocationsSpinner.getSelectedItem().toString();
-            Log.d("SELECTION","selección spinner: "+brandsLocationsSpinnerSelection);
-
+            populateLocationsSpinner(brandsLocationsSpinner,view,String.valueOf(R.array.supermarket_brands_2_locations));
         }
         };
         if(spinnerId == R.id.brands_locations){
@@ -83,6 +64,16 @@ public class NewPurchase extends AppCompatActivity implements AdapterView.OnItem
 
 
     }
+
+    void populateLocationsSpinner (Spinner spinnerName, View view, String index) {
+        ArrayAdapter<String> adapter= new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(Integer.parseInt(index)));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerName.setAdapter(adapter);
+        spinnerName.setOnItemSelectedListener(this);
+        String brandsLocationsSpinnerSelection = spinnerName.getSelectedItem().toString();
+        Log.d("SELECTION","selección spinner: "+brandsLocationsSpinnerSelection);
+    }
+
 
     public void onLocationSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
