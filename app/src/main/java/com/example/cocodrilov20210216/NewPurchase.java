@@ -29,49 +29,80 @@ public class NewPurchase extends AppCompatActivity implements AdapterView.OnItem
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-
-
     }
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        Log.d("SELECTION","Usuario hizo selección: "+pos);
-        String selection = parent.getSelectedItem().toString();
-        Log.d("SELECTION","selección: "+selection);
+        int spinnerId = parent.getId();
+        Log.d("SELECTION","Spinner ID: "+spinnerId);
         Spinner brandsLocationsSpinner = (Spinner) findViewById(R.id.brands_locations);
 
-
-        //if McDonalds, populates plate spinner with respective
+        if(spinnerId == R.id.supermarket_spinner){
+            Log.d("SELECTION","Spinner ID: "+spinnerId);
+            Log.d("SELECTION","Usuario hizo selección: "+pos);
+            String selection = parent.getSelectedItem().toString();
+            Log.d("SELECTION","selección: "+selection);
         if(pos == 0){
             ArrayAdapter<String> adapter= new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.supermarket_brands_0_locations));
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             brandsLocationsSpinner.setAdapter(adapter);
+            brandsLocationsSpinner.setOnItemSelectedListener(this);
+            String brandsLocationsSpinnerSelection = brandsLocationsSpinner.getSelectedItem().toString();
+            Log.d("SELECTION","selección spinner: "+brandsLocationsSpinnerSelection);
+
+
+
         }
         //if kfc, populates plate spinner  with respective
         if(pos == 1){
             ArrayAdapter<String> adapter= new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.supermarket_brands_1_locations));
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             brandsLocationsSpinner.setAdapter(adapter);
+            brandsLocationsSpinner.setOnItemSelectedListener(this);
+            String brandsLocationsSpinnerSelection = brandsLocationsSpinner.getSelectedItem().toString();
+            Log.d("SELECTION","selección spinner: "+brandsLocationsSpinnerSelection);
+
         }
 
         if(pos == 2){
             ArrayAdapter<String> adapter= new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.supermarket_brands_2_locations));
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             brandsLocationsSpinner.setAdapter(adapter);
+            brandsLocationsSpinner.setOnItemSelectedListener(this);
+            String brandsLocationsSpinnerSelection = brandsLocationsSpinner.getSelectedItem().toString();
+            Log.d("SELECTION","selección spinner: "+brandsLocationsSpinnerSelection);
+
+        }
+        };
+        if(spinnerId == R.id.brands_locations){
+            String brandsLocationsSpinnerSelection = brandsLocationsSpinner.getSelectedItem().toString();
+            Log.d("SELECTION","selección spinner: "+brandsLocationsSpinnerSelection);
         }
 
 
     }
 
+    public void onLocationSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        Log.d("SELECTION","Usuario hizo selección: "+pos);
+        String selection = parent.getSelectedItem().toString();
+        Log.d("SELECTION","selección: "+selection);
+
+    }
+        //
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
         Log.d("SELECTION","Ningún elemento seleccionado");
 
     }
 
-    
+
+    public void photo(View view) {
+        //button.setVisibility(View.VISIBLE);
+
+    }
 }
 
 
