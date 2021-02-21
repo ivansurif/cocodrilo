@@ -3,6 +3,7 @@ package com.example.cocodrilov20210216;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 public class NewPurchase extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    static  String EXTRA_STOREBRAND = "com.example.cocodrilov20210216.STOREBRAND";
+    static  String EXTRA_STORELOCATION = "com.example.cocodrilov20210216.STORELOCATION";
 
 
 
@@ -46,6 +49,7 @@ public class NewPurchase extends AppCompatActivity implements AdapterView.OnItem
             Log.d("SELECTION","Spinner ID: "+spinnerId);
             Log.d("SELECTION","Usuario hizo selección: "+pos);
             String selection = parent.getSelectedItem().toString();
+            EXTRA_STOREBRAND = selection;
             Log.d("SELECTION","selección: "+selection);
         if(pos == 0){
             populateLocationsSpinner(brandsLocationsSpinner,view, String.valueOf(R.array.supermarket_brands_0_locations));
@@ -60,6 +64,7 @@ public class NewPurchase extends AppCompatActivity implements AdapterView.OnItem
         if(spinnerId == R.id.brands_locations){
             String brandsLocationsSpinnerSelection = brandsLocationsSpinner.getSelectedItem().toString();
             Log.d("SELECTION","selección spinner: "+brandsLocationsSpinnerSelection);
+            EXTRA_STORELOCATION = brandsLocationsSpinnerSelection;
         }
 
 
@@ -94,6 +99,17 @@ public class NewPurchase extends AppCompatActivity implements AdapterView.OnItem
         //button.setVisibility(View.VISIBLE);
 
     }
+
+    public void enterProductData(View view) {
+        Intent intent = new Intent(this, ScanTicket.class);
+        intent.putExtra("EXTRA_STORE_BRAND", EXTRA_STOREBRAND);
+        intent.putExtra("EXTRA_STORE_LOCATION", EXTRA_STORELOCATION);
+        startActivity(intent);
+
+    }
+
+
+
 }
 
 
