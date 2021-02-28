@@ -52,4 +52,9 @@ dependencies {
 
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+
+    // Adding the dependencies for the ML Kit Android libraries to your module's app-level gradle file as per
+    // https://developers.google.com/ml-kit/vision/text-recognition/android
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.3'
+
 }

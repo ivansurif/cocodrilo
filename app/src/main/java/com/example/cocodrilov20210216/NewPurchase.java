@@ -3,8 +3,10 @@ package com.example.cocodrilov20210216;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,7 +16,6 @@ import android.widget.Spinner;
 public class NewPurchase extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     static  String EXTRA_STOREBRAND = "com.example.cocodrilov20210216.STOREBRAND";
     static  String EXTRA_STORELOCATION = "com.example.cocodrilov20210216.STORELOCATION";
-
 
 
     @Override
