@@ -8,6 +8,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -19,6 +22,9 @@ import java.util.Date;
 public class ScanTicket extends AppCompatActivity {
 
     static Uri photoURI = null;
+
+
+
     // Defining method to take open camera and take a picture
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -61,8 +67,27 @@ public class ScanTicket extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            setContentView(R.layout.activity_scan_ticket2);
             ImageView imageView = (ImageView)findViewById(R.id.imageView);
             imageView.setImageBitmap(imageBitmap);
+            Button okButton = findViewById(R.id.button3);
+            Button retakeButton = findViewById(R.id.button4);
+            okButton.setVisibility(View.VISIBLE);
+            retakeButton.setVisibility(View.VISIBLE);
+            retakeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("BUTTONS","pressed noOK Button");
+                    dispatchTakePictureIntent();
+                }
+            });
+            okButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Code here executes on main thread after user presses button
+                }
+            });
+
+
         } else {
 
         }
@@ -70,10 +95,19 @@ public class ScanTicket extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_scan_ticket2);
+        Button okButton = findViewById(R.id.button3);
+        Button retakeButton = findViewById(R.id.button4);
+        okButton.setVisibility(View.GONE);
+        retakeButton.setVisibility(View.GONE);
+
+
+
+
+
         String storeBrand = getIntent().getStringExtra("EXTRA_STORE_BRAND");
         String storeLocation = getIntent().getStringExtra("EXTRA_STORE_LOCATION");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scan_ticket2);
         dispatchTakePictureIntent();
     }
 
